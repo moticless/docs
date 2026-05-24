@@ -4,17 +4,32 @@ acl_categories:
 - '@stream'
 - '@fast'
 arguments:
-- key_spec_index: 0
+- display_text: key
+  key_spec_index: 0
   name: key
   type: key
-- name: idmp-duration
+- arguments:
+  - display_text: idmp-duration-token
+    name: idmp-duration-token
+    token: IDMP-DURATION
+    type: pure-token
+  - display_text: duration
+    name: duration
+    type: integer
+  name: idmp-duration-block
   optional: true
-  token: IDMP-DURATION
-  type: integer
-- name: idmp-maxsize
+  type: block
+- arguments:
+  - display_text: idmp-maxsize-token
+    name: idmp-maxsize-token
+    token: IDMP-MAXSIZE
+    type: pure-token
+  - display_text: maxsize
+    name: maxsize
+    type: integer
+  name: idmp-maxsize-block
   optional: true
-  token: IDMP-MAXSIZE
-  type: integer
+  type: block
 arity: -2
 categories:
 - docs
@@ -50,7 +65,7 @@ linkTitle: XCFGSET
 railroad_diagram: /images/railroad/xcfgset.svg
 since: 8.6.0
 summary: Sets the IDMP configuration parameters for a stream.
-syntax_fmt: "XCFGSET key [IDMP-DURATION\_idmp-duration]\n  [IDMP-MAXSIZE\_idmp-maxsize]"
+syntax_fmt: XCFGSET key [IDMP-DURATION duration] [IDMP-MAXSIZE maxsize]
 title: XCFGSET
 ---
 Sets the IDMP (Idempotent Message Processing) configuration parameters for a stream. This command configures how long idempotent IDs are retained and the maximum number of idempotent IDs tracked per producer.
